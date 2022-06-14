@@ -9,3 +9,9 @@ export const fetchArticles = async (slug) => {
 
   return res.data.articles;
 };
+
+export const fetchTopics = async () => {
+  const res = await newsApi.get("/topics");
+
+  return res.data.topics;
+};
