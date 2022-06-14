@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
+import Slugreddit from "./components/Slugreddit/Slugreddit";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/slug/:slug" element={<Slugreddit />} />
       </Routes>
     </div>
   );
