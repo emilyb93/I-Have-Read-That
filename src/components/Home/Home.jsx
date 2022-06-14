@@ -1,13 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchArticles } from "../../api";
+import ArticleList from "../ArticleList.jsx/ArticleList";
 
 function Home() {
+  const [articles, setArticles] = useState([]);
 
-    const 
   useEffect(() => {
-    fetchArticles();
+    fetchArticles().then((fetchedArticles) => setArticles(fetchedArticles));
   }, []);
-  return <div>Home</div>;
+  return (
+    <div>
+      <ArticleList articles={articles} />
+    </div>
+  );
 }
 
 export default Home;
