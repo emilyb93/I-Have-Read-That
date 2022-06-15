@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import Slugreddit from "./components/Slugreddit/Slugreddit";
 import { useEffect, useState } from "react";
 import { fetchTopics } from "./api";
+import SingleArticle from "./components/SingleArticle/SingleArticle";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -58,6 +59,7 @@ function App() {
           path="/slug/:slug"
           element={<Slugreddit setInfo={setInfo} topics={topics} />}
         />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
   );
