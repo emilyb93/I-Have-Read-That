@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchComments } from "../../api";
+import CommentCard from "../CommentCard/CommentCard";
 
 export default function CommentsList({ article_id }) {
   const [comments, setComments] = useState([]);
