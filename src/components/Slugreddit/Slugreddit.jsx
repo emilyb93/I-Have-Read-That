@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
 import ArticleList from "../ArticleList.jsx/ArticleList";
 
-function Slugreddit() {
+function Slugreddit({ setInfo, topics }) {
   const [articles, setArticles] = useState([]);
   const { slug } = useParams();
   useEffect(() => {
@@ -12,12 +12,21 @@ function Slugreddit() {
     });
   }, [slug]);
 
-  return (
-    <>
-      <h1>Slugreddit</h1>
-      <ArticleList articles={articles} />
-    </>
-  );
+  useEffect(() => {
+    if (slug) {
+      setInfo(() => {
+        let slugObj;
+        topics.forEach((topic) => {
+          if (topic.slug === slug) {
+            slugObj = topic;
+          }
+        });
+        return slugObj;
+      });
+    }
+  }, [slug, topics]);
+
+  return <ArticleList articles={articles} />;
 }
 
 export default Slugreddit;
