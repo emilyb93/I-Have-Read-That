@@ -20,3 +20,10 @@ export const fetchArticleWithId = async (article_id) => {
   const res = await newsApi.get(`/articles/${article_id}`);
   return res.data.article;
 };
+
+export const patchArticleVotes = async (article_id, inc_votes) => {
+  console.log({ article_id, inc_votes });
+  const res = await newsApi.patch(`/articles/${article_id}`, { inc_votes });
+
+  return res;
+};
