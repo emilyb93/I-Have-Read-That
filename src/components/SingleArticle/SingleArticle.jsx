@@ -6,14 +6,23 @@ import moment from "moment";
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { article_id } = useParams();
 
   useEffect(() => {
-    fetchArticleWithId(article_id).then((fetchedArticle) => {
-      setArticle(fetchedArticle);
-    });
+    fetchArticleWithId(article_id)
+      .then((fetchedArticle) => {
+        setArticle(fetchedArticle);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setIsLoading(false);
+      });
   }, []);
 
+  if (isLoading) return <p>... Loading ...</p>;
+  if (error) return <p>Somethings gone wrong there sorry</p>;
   return (
     <section>
       <h2>{article.title}</h2>
