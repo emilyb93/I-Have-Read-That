@@ -23,6 +23,9 @@ const style = {
     marginRight: "1rem",
     fontSize: "0.7rem",
   },
+  articleTitle: {
+    marginBottom: "0px",
+  },
 };
 
 // just done styling for the list, needs a bit more work but then move onto next ticket
