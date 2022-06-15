@@ -9,7 +9,6 @@ import { patchArticleVotes } from "../../api";
 export default function ArticleVote({ article_id, articleVotes }) {
   const [votes] = useState(articleVotes);
   const [voteChange, setVoteChange] = useState(0);
-  const [voteError, setVoteError] = useState(false);
 
   function handleVote(incVote) {
     const oppositeVoteValue = incVote > 0 ? -1 : 1;
