@@ -9,7 +9,7 @@ function App() {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState({});
-  const { slug } = useParams();
+
   useEffect(() => {
     fetchTopics()
       .then((fetchedTopics) => {
@@ -30,7 +30,11 @@ function App() {
         </Link>
         <nav>
           {topics.map((topic) => {
-            return <NavLink to={`/slug/${topic.slug}`}>{topic.slug}</NavLink>;
+            return (
+              <NavLink key={`topic-${topic.slug}`} to={`/slug/${topic.slug}`}>
+                {topic.slug}
+              </NavLink>
+            );
           })}
         </nav>
       </header>
@@ -43,7 +47,7 @@ function App() {
         ) : (
           <>
             <h2>Slugreddit</h2>
-            <p>Home of the news</p>
+            <p>Home Of The News</p>
           </>
         )}
       </section>
