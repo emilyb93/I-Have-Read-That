@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleWithId } from "../../api";
 import moment from "moment";
+import ArticleVote from "../ArticleVote/ArticleVote";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -29,6 +30,7 @@ function SingleArticle() {
       <p> by {article.author}</p>
       <p>{moment(article.created_at).fromNow()}</p>
       <p>{article.body}</p>
+      <ArticleVote article_id={article.article_id} votes={article.votes} />
     </section>
   );
 }
