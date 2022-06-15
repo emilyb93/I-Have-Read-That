@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
 import ArticleList from "../ArticleList.jsx/ArticleList";
 
-function Slugreddit({ setInfo, topics }) {
+function Slugged({ setInfo, topics }) {
   const [articles, setArticles] = useState([]);
   const { slug } = useParams();
 
@@ -42,4 +42,4 @@ function Slugreddit({ setInfo, topics }) {
   return <ArticleList articles={articles} />;
 }
 
-export default Slugreddit;
+export default Slugged;
