@@ -22,8 +22,19 @@ export const fetchArticleWithId = async (article_id) => {
 };
 
 export const patchArticleVotes = async (article_id, inc_votes) => {
-  console.log({ article_id, inc_votes });
   const res = await newsApi.patch(`/articles/${article_id}`, { inc_votes });
+
+  return res;
+};
+
+export const fetchComments = async (article_id) => {
+  const res = await newsApi.get(`/articles/${article_id}/comments`);
+
+  return res.data.comments;
+};
+
+export const patchCommentVotes = async (comment_id, inc_votes) => {
+  const res = await newsApi.patch(`/comment/${comment_id}`, { inc_votes });
 
   return res;
 };
