@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   articleList: {
@@ -31,15 +31,29 @@ const style = {
 // just done styling for the list, needs a bit more work but then move onto next ticket
 
 function ArticleList({ articles }) {
+  let navigate = useNavigate();
   return (
     <ul style={style.articleList}>
       {articles.map((article) => {
         return (
           <li style={style.articleCard} key={"article" + article.article_id}>
-            <p style={style.articleTitle}> {article.title}</p>
-            <Link to={`/slug/${article.topic}`}>
-              <p>{"/" + article.topic}</p>
-            </Link>
+            <p
+              onClick={() => {
+                navigate(`/article/${article.article_id}`);
+              }}
+              style={style.articleTitle}
+            >
+              {" "}
+              {article.title}
+            </p>
+
+            <p
+              onClick={() => {
+                navigate(`/slug/${article.topic}`);
+              }}
+            >
+              {"/" + article.topic}
+            </p>
           </li>
         );
       })}
