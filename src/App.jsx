@@ -1,9 +1,10 @@
 import "./App.css";
 import { Routes, Route, Link, NavLink, useParams } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Slugreddit from "./components/Slugreddit/Slugreddit";
+import Slugged from "./components/Slugged/Slugged";
 import { useEffect, useState } from "react";
 import { fetchTopics } from "./api";
+import SingleArticle from "./components/SingleArticle/SingleArticle";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -26,7 +27,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Link to="/">
-          <h1>Slugreddit</h1>
+          <h1>Slugged</h1>
         </Link>
         <nav>
           {topics.map((topic) => {
@@ -46,7 +47,7 @@ function App() {
           </>
         ) : (
           <>
-            <h2>Slugreddit</h2>
+            <h2>Slugged</h2>
             <p>Home Of The News</p>
           </>
         )}
@@ -56,8 +57,9 @@ function App() {
         <Route path="/" element={<Home setInfo={setInfo} />} />
         <Route
           path="/slug/:slug"
-          element={<Slugreddit setInfo={setInfo} topics={topics} />}
+          element={<Slugged setInfo={setInfo} topics={topics} />}
         />
+        <Route path="/article/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
   );

@@ -15,3 +15,8 @@ export const fetchTopics = async () => {
 
   return res.data.topics;
 };
+
+export const fetchArticleWithId = async (article_id) => {
+  const res = await newsApi.get(`/articles/${article_id}`);
+  return res.data.article;
+};

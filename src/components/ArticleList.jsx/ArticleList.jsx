@@ -36,7 +36,10 @@ function ArticleList({ articles }) {
       {articles.map((article) => {
         return (
           <li style={style.articleCard} key={"article" + article.article_id}>
-            <p style={style.articleTitle}> {article.title}</p>
+            <Link to={`/article/${article.article_id}`}>
+              <p style={style.articleTitle}> {article.title}</p>
+            </Link>
+
             <Link to={`/slug/${article.topic}`}>
               <p>{"/" + article.topic}</p>
             </Link>
