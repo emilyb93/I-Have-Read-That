@@ -18,6 +18,5 @@ export const fetchTopics = async () => {
 
 export const fetchArticleWithId = async (article_id) => {
   const res = await newsApi.get(`/articles/${article_id}`);
-  console.log(res);
   return res.data.article;
 };
