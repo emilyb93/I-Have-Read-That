@@ -30,7 +30,10 @@ function SingleArticle() {
       <p> by {article.author}</p>
       <p>{moment(article.created_at).fromNow()}</p>
       <p>{article.body}</p>
-      <ArticleVote article_id={article.article_id} votes={article.votes} />
+      <ArticleVote
+        article_id={article.article_id}
+        articleVotes={article.votes}
+      />
     </section>
   );
 }
