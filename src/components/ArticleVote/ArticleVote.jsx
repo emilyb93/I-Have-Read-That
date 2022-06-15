@@ -9,6 +9,7 @@ import { patchArticleVotes } from "../../api";
 export default function ArticleVote({ article_id, articleVotes }) {
   const [votes] = useState(articleVotes);
   const [voteChange, setVoteChange] = useState(0);
+  const [voteError, setVoteError] = useState(false);
 
   function handleVote(incVote) {
     const oppositeVoteValue = incVote > 0 ? -1 : 1;
@@ -16,10 +17,14 @@ export default function ArticleVote({ article_id, articleVotes }) {
       // This allow the user to only either add or remove a single vote in either direction
       if (voteChange !== incVote) {
         setVoteChange(incVote);
-        patchArticleVotes(article_id, incVote);
+        patchArticleVotes(article_id, incVote).catch(() => {
+          setVoteChange(0);
+        });
       } else {
         setVoteChange(0);
-        patchArticleVotes(article_id, oppositeVoteValue);
+        patchArticleVotes(article_id, oppositeVoteValue).catch(() => {
+          setVoteChange(0);
+        });
       }
     };
 
