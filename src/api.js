@@ -32,3 +32,9 @@ export const fetchComments = async (article_id) => {
 
   return res.data.comments;
 };
+
+export const patchCommentVotes = async (comment_id, inc_votes) => {
+  const res = await newsApi.patch(`/comment/${comment_id}`, { inc_votes });
+
+  return res;
+};

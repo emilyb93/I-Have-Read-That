@@ -25,7 +25,12 @@ export default function CommentsList({ article_id }) {
     <section>
       {comments.length < 1
         ? null
-        : comments.map((comment) => <CommentCard comment={comment} />)}
+        : comments.map((comment) => (
+            <CommentCard
+              key={`comment-${comment.comment_id}`}
+              comment={comment}
+            />
+          ))}
     </section>
   );
 }
