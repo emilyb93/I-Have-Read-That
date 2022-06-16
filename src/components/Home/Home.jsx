@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { fetchArticles } from "../../api";
 import ArticleList from "../ArticleList.jsx/ArticleList";
+import infoContext from "../../contexts/InfoContext";
 
-function Home({ setInfo }) {
+function Home() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const { setInfo } = useContext(infoContext);
 
   const [selectedSort, setSelectedSort] = useState({
     sort_by: "date",

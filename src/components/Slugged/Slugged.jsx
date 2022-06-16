@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
+import infoContext from "../../contexts/InfoContext";
 import ArticleList from "../ArticleList.jsx/ArticleList";
 
-function Slugged({ setInfo, topics }) {
+function Slugged({ topics }) {
   const [articles, setArticles] = useState([]);
   const { slug } = useParams();
 
@@ -14,6 +15,8 @@ function Slugged({ setInfo, topics }) {
     sort_by: "date",
     order: "desc",
   });
+
+  const { setInfo } = useContext(infoContext);
 
   useEffect(() => {
     const { sort_by, order } = selectedSort;
