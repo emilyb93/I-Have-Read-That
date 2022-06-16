@@ -24,7 +24,7 @@ export default function CommentsList({ article_id }) {
 
   return (
     <>
-      <CommentPost article_id={article_id} />
+      <CommentPost article_id={article_id} setComments={setComments} />
       <section>
         {comments.length < 1
           ? null
