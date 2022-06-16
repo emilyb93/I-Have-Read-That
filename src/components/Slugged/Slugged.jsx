@@ -10,8 +10,15 @@ function Slugged({ setInfo, topics }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
+  const [selectedSort, setSelectedSort] = useState({
+    sort_by: "date",
+    order: "desc",
+  });
+
   useEffect(() => {
-    fetchArticles(slug)
+    const { sort_by, order } = selectedSort;
+    setInfo({});
+    fetchArticles(slug, sort_by, order)
       .then((fetchedArticles) => {
         setArticles(fetchedArticles);
         setIsLoading(false);
@@ -20,7 +27,7 @@ function Slugged({ setInfo, topics }) {
         setError(true);
         setIsLoading(false);
       });
-  }, [slug]);
+  }, [slug, selectedSort]);
 
   useEffect(() => {
     if (slug) {
@@ -39,7 +46,7 @@ function Slugged({ setInfo, topics }) {
   if (isLoading) return <p>... Loading ...</p>;
   if (error) return <p>Somethings gone wrong there sorry</p>;
 
-  return <ArticleList articles={articles} />;
+  return <ArticleList articles={articles} setSelectedSort={setSelectedSort} />;
 }
 
 export default Slugged;
