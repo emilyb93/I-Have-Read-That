@@ -27,7 +27,7 @@ function CommentPost({ article_id, setComments }) {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="comment input">Comment as user</label>
+        <label htmlFor="comment input">{`Comment as ${username}`}</label>
         <textarea
           value={body}
           onChange={handleBodyChange}
