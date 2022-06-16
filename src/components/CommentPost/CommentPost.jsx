@@ -6,9 +6,11 @@ function CommentPost({ article_id, setComments }) {
   const [body, setBody] = useState("");
   const [commentError, setCommentError] = useState(false);
   const [commentPosted, setCommentPosted] = useState(false);
+  const [waitingForResponse, setWaitingForResponse] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setWaitingForResponse(true);
     postComment(article_id, username, body)
       .then((newComment) => {
         setComments((currComments) => {
@@ -16,8 +18,10 @@ function CommentPost({ article_id, setComments }) {
         });
         setCommentError(false);
         setCommentPosted(true);
+        setWaitingForResponse(false);
       })
       .catch(() => {
+        setWaitingForResponse(false);
         setCommentError(true);
         setCommentPosted(false);
       });
@@ -31,12 +35,15 @@ function CommentPost({ article_id, setComments }) {
     <section>
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment input">{`Comment as ${username}`}</label>
-        <textarea
+        <input
+          type="text"
           value={body}
           onChange={handleBodyChange}
           name="comment input"
-        ></textarea>
-        <button type="submit">Comment</button>
+        ></input>
+        <button type="submit" disabled={waitingForResponse}>
+          Comment
+        </button>
         {commentPosted && <p>Comment Posted!</p>}
         {commentError && <p>Oops, sorry something went wrong there!</p>}
       </form>
