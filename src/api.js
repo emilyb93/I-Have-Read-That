@@ -4,8 +4,10 @@ const newsApi = axios.create({
   baseURL: "https://news-server-project.herokuapp.com/api",
 });
 
-export const fetchArticles = async (slug) => {
-  const res = await newsApi.get("/articles", { params: { topic: slug } });
+export const fetchArticles = async (topic, sort_by, order) => {
+  const res = await newsApi.get("/articles", {
+    params: { topic: topic, sort_by, order },
+  });
 
   return res.data.articles;
 };

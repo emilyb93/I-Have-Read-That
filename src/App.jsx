@@ -5,10 +5,13 @@ import Slugged from "./components/Slugged/Slugged";
 import { useEffect, useState } from "react";
 import { fetchTopics } from "./api";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
+import { useContext } from "react";
+import InfoContext from "./contexts/InfoContext";
 
 function App() {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [info, setInfo] = useState({});
 
   useEffect(() => {
@@ -18,50 +21,53 @@ function App() {
       })
       .then(() => {
         setIsLoading(false);
+        setError(false);
       })
-      .catch(console.log);
+      .catch(() => {
+        setError(true);
+      });
   }, []);
 
   if (isLoading) return <p>... Loading ...</p>;
+  if (error) return <p>Oops, somethings gone wrong there!!</p>;
   return (
-    <div className="App">
-      <header className="App-header">
-        <Link to="/">
-          <h1>Slugged</h1>
-        </Link>
-        <nav>
-          {topics.map((topic) => {
-            return (
-              <NavLink key={`topic-${topic.slug}`} to={`/slug/${topic.slug}`}>
-                {topic.slug}
-              </NavLink>
-            );
-          })}
-        </nav>
-      </header>
-      <section id="info-section">
-        {info.slug ? (
-          <>
-            <h2>{info.slug[0].toUpperCase() + info.slug.slice(1)}</h2>
-            <p>{info.description}</p>
-          </>
-        ) : (
-          <>
-            <h2>Slugged</h2>
-            <p>Home Of The News</p>
-          </>
-        )}
-      </section>
+    <InfoContext.Provider value={{ info, setInfo }}>
+      <div className="App">
+        <header className="App-header">
+          <Link to="/">
+            <h1>Slugged</h1>
+          </Link>
+          <nav>
+            {topics.map((topic) => {
+              return (
+                <NavLink key={`topic-${topic.slug}`} to={`/slug/${topic.slug}`}>
+                  {topic.slug}
+                </NavLink>
+              );
+            })}
+          </nav>
+        </header>
+        <section id="info-section">
+          {info.slug ? (
+            <>
+              <h2>{info.slug[0].toUpperCase() + info.slug.slice(1)}</h2>
+              <p>{info.description}</p>
+            </>
+          ) : (
+            <>
+              <h2>Slugged</h2>
+              <p>Home Of The News</p>
+            </>
+          )}
+        </section>
 
-      <Routes>
-        <Route path="/" element={<Home setInfo={setInfo} />} />
-        <Route
-          path="/slug/:slug"
-          element={<Slugged setInfo={setInfo} topics={topics} />}
-        />
-        <Route path="/article/:article_id" element={<SingleArticle />} />
-      </Routes>
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/slug/:slug" element={<Slugged topics={topics} />} />
+          <Route path="/article/:article_id" element={<SingleArticle />} />
+        </Routes>
+      </div>
+    </InfoContext.Provider>
   );
 }
 

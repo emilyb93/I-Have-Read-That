@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { fetchArticleWithId } from "../../api";
 import moment from "moment";
 import ArticleVote from "../ArticleVote/ArticleVote";
 import CommentsList from "../CommentsList/CommentsList";
+import InfoContext from "../../contexts/InfoContext";
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const { article_id } = useParams();
 
+  const { setInfo } = useContext(InfoContext);
+
   useEffect(() => {
     fetchArticleWithId(article_id)
       .then((fetchedArticle) => {
         setArticle(fetchedArticle);
+        setInfo({ slug: fetchedArticle.topic });
         setIsLoading(false);
       })
       .catch(() => {

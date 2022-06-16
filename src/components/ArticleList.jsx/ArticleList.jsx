@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SortBar from "../SortBar/SortBar";
 
 const style = {
   articleList: {
@@ -28,25 +29,27 @@ const style = {
   },
 };
 
-// just done styling for the list, needs a bit more work but then move onto next ticket
-
-function ArticleList({ articles }) {
+function ArticleList({ articles, setSelectedSort }) {
   return (
-    <ul style={style.articleList}>
-      {articles.map((article) => {
-        return (
-          <li style={style.articleCard} key={"article" + article.article_id}>
-            <Link to={`/article/${article.article_id}`}>
-              <p style={style.articleTitle}> {article.title}</p>
-            </Link>
+    <>
+      <SortBar setSelectedSort={setSelectedSort} />
 
-            <Link to={`/slug/${article.topic}`}>
-              <p>{"/" + article.topic}</p>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+      <ul style={style.articleList}>
+        {articles.map((article) => {
+          return (
+            <li style={style.articleCard} key={"article" + article.article_id}>
+              <Link to={`/article/${article.article_id}`}>
+                <p style={style.articleTitle}> {article.title}</p>
+              </Link>
+
+              <Link to={`/slug/${article.topic}`}>
+                <p>{"/" + article.topic}</p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 }
 
