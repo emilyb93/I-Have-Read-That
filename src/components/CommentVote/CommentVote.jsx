@@ -16,12 +16,12 @@ function CommentVote({ comment_id, comment_votes }) {
       // This allow the user to only either add or remove a single vote in either direction
       if (voteChange !== incVote) {
         setVoteChange(incVote);
-        patchcommentsVotes(comments_id, incVote).catch(() => {
+        patchCommentVotes(comment_id, incVote).catch(() => {
           setVoteChange(0);
         });
       } else {
         setVoteChange(0);
-        patchcommentsVotes(comments_id, oppositeVoteValue).catch(() => {
+        patchCommentVotes(comment_id, oppositeVoteValue).catch(() => {
           setVoteChange(0);
         });
       }
