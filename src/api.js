@@ -9,8 +9,6 @@ export const fetchArticles = async (topic, sort_by, order) => {
     params: { topic: topic, sort_by, order },
   });
 
-  console.log(res);
-
   return res.data.articles;
 };
 

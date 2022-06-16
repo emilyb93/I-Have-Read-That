@@ -10,6 +10,7 @@ function App() {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchTopics()
@@ -18,11 +19,15 @@ function App() {
       })
       .then(() => {
         setIsLoading(false);
+        setError(false);
       })
-      .catch(console.log);
+      .catch(() => {
+        setError(true);
+      });
   }, []);
 
   if (isLoading) return <p>... Loading ...</p>;
+  if (error) return <p>Oops, somethings gone wrong there!!</p>;
   return (
     <div className="App">
       <header className="App-header">
