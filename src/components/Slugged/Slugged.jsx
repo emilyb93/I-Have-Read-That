@@ -17,7 +17,7 @@ function Slugged({ setInfo, topics }) {
 
   useEffect(() => {
     const { sort_by, order } = selectedSort;
-    setInfo({});
+
     fetchArticles(slug, sort_by, order)
       .then((fetchedArticles) => {
         setArticles(fetchedArticles);
