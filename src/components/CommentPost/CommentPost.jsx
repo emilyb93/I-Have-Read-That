@@ -36,6 +36,7 @@ function CommentPost({ article_id, setComments }) {
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment input">{`Comment as ${username}`}</label>
         <input
+          required={true}
           type="text"
           value={body}
           onChange={handleBodyChange}
