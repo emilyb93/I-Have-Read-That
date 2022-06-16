@@ -24,7 +24,7 @@ export default function CommentsList({ article_id }) {
 
   return (
     <>
-      <CommentPost />
+      <CommentPost article_id={article_id} />
       <section>
         {comments.length < 1
           ? null
