@@ -5,6 +5,7 @@ function CommentPost({ article_id, setComments }) {
   const username = "jessjelly";
   const [body, setBody] = useState("");
   const [commentError, setCommentError] = useState(false);
+  const [commentPosted, setCommentPosted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,9 +15,11 @@ function CommentPost({ article_id, setComments }) {
           return [newComment, ...currComments];
         });
         setCommentError(false);
+        setCommentPosted(true);
       })
       .catch(() => {
         setCommentError(true);
+        setCommentPosted(false);
       });
   };
 
@@ -34,6 +37,7 @@ function CommentPost({ article_id, setComments }) {
           name="comment input"
         ></textarea>
         <button type="submit">Comment</button>
+        {commentPosted && <p>Comment Posted!</p>}
         {commentError && <p>Oops, sorry something went wrong there!</p>}
       </form>
     </section>
