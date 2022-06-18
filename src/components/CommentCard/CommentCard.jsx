@@ -3,7 +3,7 @@ import CommentVote from "../CommentVote/CommentVote";
 import { styles } from "./CommentCard.style";
 import { deleteComment } from "../../api";
 
-function CommentCard(comment) {
+function CommentCard({ comment }) {
   const { comment_id, body, author, votes } = comment;
 
   const [isDeleting, setIsDeleting] = useState(false);
