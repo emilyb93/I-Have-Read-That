@@ -32,6 +32,7 @@ export default function CommentsList({ article_id }) {
               <CommentCard
                 key={`comment-${comment.comment_id}`}
                 comment={comment}
+                setComments={setComments}
               />
             ))}
       </section>
