@@ -5,6 +5,7 @@ import moment from "moment";
 import ArticleVote from "../ArticleVote/ArticleVote";
 import CommentsList from "../CommentsList/CommentsList";
 import InfoContext from "../../contexts/InfoContext";
+import ShowError from "../ShowError/ShowError";
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -23,11 +24,12 @@ function SingleArticle() {
       .catch(() => {
         setError(true);
         setIsLoading(false);
+        setInfo({});
       });
   }, []);
 
   if (isLoading) return <p>... Loading ...</p>;
-  if (error) return <p>Somethings gone wrong there sorry</p>;
+  if (error) return <ShowError />;
   return (
     <>
       <section>

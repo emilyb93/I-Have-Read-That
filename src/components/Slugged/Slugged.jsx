@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
 import infoContext from "../../contexts/InfoContext";
 import ArticleList from "../ArticleList.jsx/ArticleList";
+import ShowError from "../ShowError/ShowError";
 
 function Slugged({ topics }) {
   const [articles, setArticles] = useState([]);
@@ -21,15 +22,22 @@ function Slugged({ topics }) {
   useEffect(() => {
     const { sort_by, order } = selectedSort;
 
-    fetchArticles(slug, sort_by, order)
-      .then((fetchedArticles) => {
-        setArticles(fetchedArticles);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setIsLoading(false);
-      });
+    const validTopics = topics.map((x) => x.slug);
+
+    if (validTopics.includes(slug)) {
+      fetchArticles(slug, sort_by, order)
+        .then((fetchedArticles) => {
+          setArticles(fetchedArticles);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setError(true);
+          setIsLoading(false);
+        });
+    } else {
+      setIsLoading(false);
+      setError(true);
+    }
   }, [slug, selectedSort]);
 
   useEffect(() => {
@@ -47,7 +55,7 @@ function Slugged({ topics }) {
   }, [slug, topics]);
 
   if (isLoading) return <p>... Loading ...</p>;
-  if (error) return <p>Somethings gone wrong there sorry</p>;
+  if (error) return <ShowError />;
 
   return <ArticleList articles={articles} setSelectedSort={setSelectedSort} />;
 }
