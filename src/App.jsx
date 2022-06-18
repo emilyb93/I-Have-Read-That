@@ -30,7 +30,13 @@ function App() {
       });
   }, []);
 
-  if (isLoading) return <Loading />;
+  if (isLoading)
+    return (
+      <>
+        <Loading />
+      </>
+    );
+
   if (error) return <p>Oops, somethings gone wrong there!!</p>;
   return (
     <InfoContext.Provider value={{ info, setInfo }}>

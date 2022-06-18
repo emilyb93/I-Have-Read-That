@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
 import infoContext from "../../contexts/InfoContext";
 import ArticleList from "../ArticleList.jsx/ArticleList";
+import Loading from "../Loading/Loading";
 import ShowError from "../ShowError/ShowError";
 
 function Slugged({ topics }) {
@@ -54,7 +55,7 @@ function Slugged({ topics }) {
     }
   }, [slug, topics]);
 
-  if (isLoading) return <p>... Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <ShowError />;
 
   return <ArticleList articles={articles} setSelectedSort={setSelectedSort} />;

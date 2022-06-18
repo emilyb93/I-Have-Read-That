@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { fetchArticles } from "../../api";
 import ArticleList from "../ArticleList.jsx/ArticleList";
 import infoContext from "../../contexts/InfoContext";
+import Loading from "../Loading/Loading";
 
 function Home() {
   const [articles, setArticles] = useState([]);
@@ -30,7 +31,7 @@ function Home() {
       });
   }, [selectedSort]);
 
-  if (isLoading) return <p>... Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Somethings gone wrong there sorry</p>;
 
   return (

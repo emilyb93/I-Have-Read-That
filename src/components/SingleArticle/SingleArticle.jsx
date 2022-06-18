@@ -6,6 +6,7 @@ import ArticleVote from "../ArticleVote/ArticleVote";
 import CommentsList from "../CommentsList/CommentsList";
 import InfoContext from "../../contexts/InfoContext";
 import ShowError from "../ShowError/ShowError";
+import Loading from "../Loading/Loading";
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +29,7 @@ function SingleArticle() {
       });
   }, []);
 
-  if (isLoading) return <p>... Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <ShowError />;
   return (
     <>
