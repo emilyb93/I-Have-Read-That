@@ -49,3 +49,9 @@ export const postComment = async (article_id, username, body) => {
 
   return res.data.comment;
 };
+
+export const deleteComment = async (comment_id) => {
+  const res = await newsApi.delete(`comments/${comment_id}`);
+
+  return res;
+};
