@@ -13,7 +13,7 @@ const styles = {
 function Loading() {
   return (
     <div style={styles.loader}>
-      <PuffLoader loading={true} />
+      <PuffLoader color="#FF4F56" loading={true} />
     </div>
   );
 }
