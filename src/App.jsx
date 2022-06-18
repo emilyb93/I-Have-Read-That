@@ -48,7 +48,7 @@ function App() {
           </nav>
         </header>
         <section id="info-section">
-          {info.slug ? (
+          {!error ? null : info ? (
             <>
               <h2>{info.slug[0].toUpperCase() + info.slug.slice(1)}</h2>
               <p>{info.description}</p>
