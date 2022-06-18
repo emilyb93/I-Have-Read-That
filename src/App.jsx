@@ -8,6 +8,7 @@ import SingleArticle from "./components/SingleArticle/SingleArticle";
 import InfoContext from "./contexts/InfoContext";
 import ShowError from "./components/ShowError/ShowError";
 import Header from "./components/Header/Header";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -29,7 +30,7 @@ function App() {
       });
   }, []);
 
-  if (isLoading) return <p>... Loading ...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Oops, somethings gone wrong there!!</p>;
   return (
     <InfoContext.Provider value={{ info, setInfo }}>
