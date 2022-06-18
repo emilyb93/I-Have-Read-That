@@ -7,6 +7,7 @@ import { fetchTopics } from "./api";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
 import { useContext } from "react";
 import InfoContext from "./contexts/InfoContext";
+import ShowError from "./components/ShowError/ShowError";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -65,6 +66,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/slug/:slug" element={<Slugged topics={topics} />} />
           <Route path="/article/:article_id" element={<SingleArticle />} />
+          <Route path="/*" element={<ShowError />} />
         </Routes>
       </div>
     </InfoContext.Provider>
