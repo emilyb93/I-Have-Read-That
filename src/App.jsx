@@ -5,9 +5,9 @@ import Slugged from "./components/Slugged/Slugged";
 import { useEffect, useState } from "react";
 import { fetchTopics } from "./api";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
-import { useContext } from "react";
 import InfoContext from "./contexts/InfoContext";
 import ShowError from "./components/ShowError/ShowError";
+import Header from "./components/Header/Header";
 
 function App() {
   const [topics, setTopics] = useState([]);
@@ -34,22 +34,9 @@ function App() {
   return (
     <InfoContext.Provider value={{ info, setInfo }}>
       <div className="App">
-        <header className="App-header">
-          <Link to="/">
-            <h1>Slugged</h1>
-          </Link>
-          <nav>
-            {topics.map((topic) => {
-              return (
-                <NavLink key={`topic-${topic.slug}`} to={`/slug/${topic.slug}`}>
-                  {topic.slug}
-                </NavLink>
-              );
-            })}
-          </nav>
-        </header>
+        <Header topics={topics} />
         <section id="info-section">
-          {!error ? null : info ? (
+          {info.slug ? (
             <>
               <h2>{info.slug[0].toUpperCase() + info.slug.slice(1)}</h2>
               <p>{info.description}</p>
