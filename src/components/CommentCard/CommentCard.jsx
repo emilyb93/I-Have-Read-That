@@ -3,16 +3,16 @@ import CommentVote from "../CommentVote/CommentVote";
 import { styles } from "./CommentCard.style";
 import { deleteComment } from "../../api";
 
-function CommentCard({ comment, setComments }) {
+function CommentCard(comment) {
   const { comment_id, body, author, votes } = comment;
 
   const [isDeleting, setIsDeleting] = useState(false);
-  const [error, setError] = useState(false);
+
   const [deleted, setDeleted] = useState(false);
 
   const handleDelete = () => {
     setIsDeleting(true);
-    setError(false);
+
     deleteComment(comment_id)
       .then((res) => {
         if (res.status === 204) {
@@ -22,7 +22,6 @@ function CommentCard({ comment, setComments }) {
       })
       .catch(() => {
         setIsDeleting(true);
-        setError(true);
       });
   };
   return (
