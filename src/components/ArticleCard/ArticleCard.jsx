@@ -5,7 +5,7 @@ import ArticleVote from "../ArticleVote/ArticleVote";
 const styles = {
   articleCard: {
     display: "grid",
-    gridTemplateRows: "10% 50% 10%",
+    gridTemplateRows: "30% 50% 20%",
 
     minHeight: "10rem",
     maxHeight: "15rem",
@@ -15,6 +15,7 @@ const styles = {
     marginLeft: "1rem",
     marginRight: "1rem",
     fontSize: "0.7rem",
+    paddingBottom: "1rem",
   },
   articleTitle: {
     fontSize: "1.3rem",
