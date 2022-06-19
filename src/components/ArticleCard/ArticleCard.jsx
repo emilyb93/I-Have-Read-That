@@ -37,6 +37,12 @@ const styles = {
     alignContent: "center",
     marginBlockEnd: "0px",
   },
+  commentCount: {
+    display: "flex",
+    flexDirection: "row",
+    textDecoration: "none",
+    color: "black",
+  },
 };
 
 function ArticleCard({ article }) {
@@ -59,10 +65,15 @@ function ArticleCard({ article }) {
           article_id={article.article_id}
           articleVotes={article.votes}
         />
-        <span className="material-symbols-outlined" style={styles.commentIcon}>
-          chat_bubble
-        </span>
-        <p style={styles.commentText}>{article.comment_count} Comments</p>
+        <Link to={`/article/${article.article_id}`} style={styles.commentCount}>
+          <span
+            className="material-symbols-outlined"
+            style={styles.commentIcon}
+          >
+            chat_bubble
+          </span>
+          <p style={styles.commentText}>{article.comment_count} Comments</p>
+        </Link>
       </section>
     </li>
   );
