@@ -9,25 +9,46 @@ import ShowError from "../ShowError/ShowError";
 import Loading from "../Loading/Loading";
 
 const styles = {
+  articlePage: {
+    display: "flex",
+    flexDirection: "column",
+  },
   articleSection: {
-    height: "6rem",
-    width: "7rem",
+    height: "100%",
+    width: "25rem",
     display: "grid",
-    gridTemplateArea: "votes info, votes title, empty content, empty links",
-    gridTemplateColumns: "10% 80% 10%",
-    gridTemplateRows: "30%, 10% ,40%,10%",
+    gridTemplateColumns: "0.5fr 6fr",
+    gridTemplateRows: "1fr 1fr 0.5fr",
+    gridColumnGap: "0px",
+    gridRowGap: "0px",
+  },
+  topSection: {
+    gridArea: "1 / 2 / 2 / 4",
+    display: "grid",
+    gridTemplateColumns: "1fr",
+    gridTemplateRows: "0.5fr 1fr",
   },
   votes: {
-    gridArea: "votes",
+    gridArea: "1 / 1 / 2 / 2",
+    marginBottom: "10px",
+    marginTop: "10px",
+    paddingBottom: "80%",
+    display: "flex",
+    flexDirection: "column",
   },
   posterInfo: {
-    gridArea: "info",
+    textAlign: "left",
+    marginLeft: "5px",
   },
-  title: {
-    gridArea: "title",
-  },
-  body: {
-    gridArea: "content",
+  title: { gridArea: "2/1/3/2", textAlign: "left", marginLeft: "5px" },
+  body: { gridArea: "2 / 3 / 4 / 4", textAlign: "left", marginLeft: "5px" },
+  commentCount: {
+    gridArea: "3/2/5/4",
+    textAlign: "left",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: "10px",
   },
 };
 function SingleArticle() {
@@ -55,21 +76,29 @@ function SingleArticle() {
   if (isLoading) return <Loading />;
   if (error) return <ShowError />;
   return (
-    <>
+    <section style={styles.articlePage}>
       <section style={styles.articleSection}>
-        <ArticleVoteVert
-          article_id={article.article_id}
-          articleVotes={article.votes}
-        />
-        <p style={styles.posterInfo}>
-          Posted by {article.author} {moment(article.created_at).fromNow()}
-        </p>
-        <h2 style={styles.title}>{article.title}</h2>
-
+        <section style={styles.votes}>
+          <ArticleVoteVert
+            article_id={article.article_id}
+            articleVotes={article.votes}
+            style={styles.votes}
+          />
+        </section>
+        <section style={styles.topSection}>
+          <p style={styles.posterInfo}>
+            Posted by {article.author} {moment(article.created_at).fromNow()}
+          </p>
+          <h2 style={styles.title}>{article.title}</h2>
+        </section>
         <p style={styles.body}>{article.body}</p>
+        <section style={styles.commentCount}>
+          <span className="material-symbols-outlined">chat_bubble</span>
+          <p>{article.comment_count} comments</p>
+        </section>
       </section>
       <CommentsList article_id={article.article_id} />
-    </>
+    </section>
   );
 }
 

@@ -68,13 +68,14 @@ const styles = {
     gridArea: "1 / 2 / 2 / 3",
 
     display: "grid",
-    gridTemplateColumns: "1fr 3fr 6fr",
+    gridTemplateColumns: "1fr 5fr 0.5fr",
     alignItems: "center",
     marginLeft: "1rem",
   },
   titleSection: {
     gridArea: "2 / 2 / 3 / 3",
     paddingLeft: "1rem",
+    paddingRight: "1rem",
   },
 };
 
@@ -96,7 +97,7 @@ function ArticleCard({ article }) {
           <p style={styles.slugText}>{"/" + article.topic}</p>
         </Link>
 
-        <p>
+        <p style={{ marginLeft: "5px" }}>
           Posted by {article.author} {moment(article.created_at).fromNow()}
         </p>
       </section>

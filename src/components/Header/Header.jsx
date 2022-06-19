@@ -9,15 +9,24 @@ const styles = {
   headerContainer: {
     width: "100%",
     height: "4rem",
-    // border: "1px solid black",
-    display: "flex",
-    flexAlign: "center",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "1fr",
+    gridColumnGap: "0px",
+    gridRowGap: "0px",
+    marginBottom: "10px",
   },
   SluggedIcon: {
     // border: "1px solid black",
     height: "4rem",
     width: "12rem",
     objectFit: "cover",
+  },
+  username: {
+    // border: "1px solid black",
+    marginLeft: "10px",
+    marginRight: "5px",
+    borderRadius: "5px",
   },
 };
 
@@ -30,6 +39,9 @@ export default function Header({ topics }) {
         <img style={styles.SluggedIcon} src={SluggedIcon}></img>
       </Link>
       <TopicDropdown topics={topics} info={info} />
+      <section style={styles.username}>
+        <p>Username Placeholder</p>
+      </section>
     </header>
   );
 }

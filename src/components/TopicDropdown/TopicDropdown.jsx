@@ -3,12 +3,17 @@ import { NavLink } from "react-router-dom";
 
 const styles = {
   topicContainer: {
-    border: "1px solid grey",
+    borderLeft: "1px solid grey",
+    borderRight: "1px solid grey",
     borderRadius: "5px",
     width: "100%",
+    height: "80%",
+    margin: "auto",
     textAlign: "left",
     fontSize: "1.3rem",
     maxWidth: "400px",
+    paddingRight: "10px",
+    marginBottom: "5px",
   },
   firstMenuItem: {
     display: "grid",

@@ -11,7 +11,6 @@ const styles = {
     height: "100%",
     width: "100%",
     fontSize: "1.2rem",
-    gridArea: "1/1/2/2",
 
     display: "flex",
     flexDirection: "column",
@@ -19,6 +18,8 @@ const styles = {
     alignContent: "center",
 
     paddingTop: "15px",
+    // backgroundColor: "#C4D9DE",
+
     // border: "1px solid grey",
   },
   upvote: {
