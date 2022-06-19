@@ -9,6 +9,13 @@ const styles = {
     paddingLeft: "15px",
     marginTop: "10px",
   },
+  selectBar: {
+    borderRadius: "30px",
+    backgroundColor: "#6EDEFA",
+    height: "2rem",
+    marginTop: "1rem",
+    padding: "7px",
+  },
 };
 
 function SortBar({ setSelectedSort }) {
@@ -29,7 +36,11 @@ function SortBar({ setSelectedSort }) {
   ];
   return (
     <form style={styles.sortBar}>
-      <select value={selectedSortLabel} onChange={handleSort}>
+      <select
+        style={styles.selectBar}
+        value={selectedSortLabel}
+        onChange={handleSort}
+      >
         {possibleSorts.map(({ label }) => {
           return (
             <option key={label} value={label}>

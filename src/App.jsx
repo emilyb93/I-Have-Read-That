@@ -99,6 +99,7 @@ function App() {
       <div className="App" style={styles.app}>
         <Header topics={topics} />
 
+        <hr style={{ borderTop: "1px solid grey" }}></hr>
         <main style={isMobile ? styles.mobileView : styles.desktopView}>
           <section style={styles.content}>
             <Routes>
