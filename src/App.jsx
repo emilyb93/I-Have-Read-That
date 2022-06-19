@@ -17,6 +17,11 @@ const styles = {
   app: {
     backgroundColor: "#F2F2F1",
     margin: "-5px",
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "10vh 1fr",
+    gridColumnGap: "0px",
+    gridRowGap: "0px",
   },
   mobileView: {
     backgroundColor: "#F2F2F1",
@@ -29,11 +34,17 @@ const styles = {
 
     gridTemplateColumns: "70% 30%",
   },
+  header: {
+    gridArea: "1/1/2/4",
+  },
   sideBar: {
     marginTop: "3rem",
+
     // width: "100%",
     maxHeight: "80vw",
     // border: "1px solid black",
+    borderLeft: "1px solid grey",
+    paddingLeft: "5px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
@@ -45,11 +56,13 @@ const styles = {
 
     paddingTop: "50%",
     paddingBottom: "50%",
+    gridArea: "info",
   },
   fakeAd: {
     height: "50%",
     paddingTop: "50%",
     paddingBottom: "50%",
+    gridArea: "ad",
 
     // border: "1px solid blue",
     // gridArea: "fakeAd",
@@ -59,9 +72,7 @@ const styles = {
     // maxHeight: "",
     width: "100%",
   },
-  content: {
-    // gridArea: "content",
-  },
+  content: { borderTop: "1px solid grey" },
 };
 
 function App() {
@@ -97,7 +108,9 @@ function App() {
   return (
     <InfoContext.Provider value={{ info, setInfo }}>
       <div className="App" style={styles.app}>
-        <Header topics={topics} />
+        <header style={styles.header}>
+          <Header topics={topics} />
+        </header>
 
         <hr style={{ borderTop: "1px solid grey" }}></hr>
         <main style={isMobile ? styles.mobileView : styles.desktopView}>
@@ -110,7 +123,7 @@ function App() {
             </Routes>
           </section>
           {isMobile ? null : (
-            <section id="info-section" style={styles.sideBar}>
+            <section style={styles.sideBar}>
               <section style={styles.infoSection}>
                 {info.slug ? (
                   <>
