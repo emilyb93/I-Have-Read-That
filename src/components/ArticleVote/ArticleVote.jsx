@@ -7,37 +7,44 @@ import downvoteFull from "../../assets/downvote-full.png";
 import { patchArticleVotes } from "../../api";
 
 const styles = {
-  vote: {
+  voteBar: {
     height: "2rem",
     width: "30%",
     display: "flex",
     flexDirection: "row",
     fontSize: "1.2rem",
+    justifyContent: "space-around",
   },
   upvote: {
     height: "1.3rem",
-    width: "1.3rem",
+    // width: "1.3rem",
     backgroundColor: "Transparent",
     border: "none",
     margin: "auto",
+    marginLeft: "2px",
+    marginRight: "2px",
   },
 
   downvote: {
     height: "1.3rem",
-    width: "1.3rem",
+    // width: "1.3rem",
     backgroundColor: "Transparent",
     border: "none",
     margin: "auto",
+    marginLeft: "2px",
+    marginRight: "2px",
   },
   voteText: {
     height: "100%",
-    width: "2rem",
+    // width: "2rem",
     justifyContent: "center",
     alignContent: "center",
     marginTop: "5px",
-    marginBlockStart: "0px",
+    // marginBlockStart: "0px",
     marginBlockEnd: "0px",
     textAlign: "center",
+    marginLeft: "2px",
+    marginRight: "2px",
   },
 };
 
@@ -66,7 +73,7 @@ export default function ArticleVote({ article_id, articleVotes }) {
   }
 
   return (
-    <div style={styles.vote}>
+    <div style={styles.voteBar}>
       <button style={styles.upvote} onClick={handleVote(1)}>
         <img
           src={voteChange > 0 ? upvoteFull : upvoteEmpty}

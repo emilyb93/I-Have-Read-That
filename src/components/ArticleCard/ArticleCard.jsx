@@ -22,6 +22,20 @@ const styles = {
   slugText: {
     fontSize: "1rem",
   },
+  bottomBar: {
+    display: "flex",
+    flexDirection: "row",
+    height: "2rem",
+  },
+  commentIcon: {
+    marginLeft: "10px",
+    marginRight: "10px",
+    paddingTop: "5px",
+  },
+  commentText: {
+    alignContent: "center",
+    marginBlockEnd: "0px",
+  },
 };
 
 function ArticleCard({ article }) {
@@ -33,10 +47,16 @@ function ArticleCard({ article }) {
       <Link to={`/article/${article.article_id}`}>
         <p style={styles.articleTitle}> {article.title}</p>
       </Link>
-      <ArticleVote
-        article_id={article.article_id}
-        articleVotes={article.votes}
-      />
+      <section style={styles.bottomBar}>
+        <ArticleVote
+          article_id={article.article_id}
+          articleVotes={article.votes}
+        />
+        <span className="material-symbols-outlined" style={styles.commentIcon}>
+          chat_bubble
+        </span>
+        <p style={styles.commentText}>{article.votes} Comments</p>
+      </section>
     </li>
   );
 }
