@@ -22,7 +22,6 @@ const styles = {
 };
 
 export default function Header({ topics }) {
-  //   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const { info } = useContext(InfoContext);
 
   return (

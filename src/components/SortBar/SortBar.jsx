@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 
+const styles = {
+  sortBar: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: "5px",
+    paddingLeft: "15px",
+    marginTop: "10px",
+  },
+};
+
 function SortBar({ setSelectedSort }) {
   const [selectedSortLabel, setSelectedSortLabel] = useState("Most Recent");
   const handleSort = (e) => {
@@ -17,7 +28,7 @@ function SortBar({ setSelectedSort }) {
     { label: "Least Popular", value: { sort_by: "votes", order: "asc" } },
   ];
   return (
-    <form>
+    <form style={styles.sortBar}>
       <select value={selectedSortLabel} onChange={handleSort}>
         {possibleSorts.map(({ label }) => {
           return (

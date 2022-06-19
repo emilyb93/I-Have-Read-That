@@ -3,8 +3,43 @@ import upvoteEmpty from "../../assets/upvote-empty.png";
 import upvoteFull from "../../assets/upvote-full.png";
 import downvoteEmpty from "../../assets/downvote-empty.png";
 import downvoteFull from "../../assets/downvote-full.png";
-import { style } from "./ArticleVote.style.js";
+// import { style } from "./ArticleVote.style.js";
 import { patchArticleVotes } from "../../api";
+
+const styles = {
+  vote: {
+    height: "2rem",
+    width: "30%",
+    display: "flex",
+    flexDirection: "row",
+    fontSize: "1.2rem",
+  },
+  upvote: {
+    height: "1.3rem",
+    width: "1.3rem",
+    backgroundColor: "Transparent",
+    border: "none",
+    margin: "auto",
+  },
+
+  downvote: {
+    height: "1.3rem",
+    width: "1.3rem",
+    backgroundColor: "Transparent",
+    border: "none",
+    margin: "auto",
+  },
+  voteText: {
+    height: "100%",
+    width: "2rem",
+    justifyContent: "center",
+    alignContent: "center",
+    marginTop: "5px",
+    marginBlockStart: "0px",
+    marginBlockEnd: "0px",
+    textAlign: "center",
+  },
+};
 
 export default function ArticleVote({ article_id, articleVotes }) {
   const [votes] = useState(articleVotes);
@@ -31,22 +66,22 @@ export default function ArticleVote({ article_id, articleVotes }) {
   }
 
   return (
-    <>
-      <button style={style.upvote} onClick={handleVote(1)}>
+    <div style={styles.vote}>
+      <button style={styles.upvote} onClick={handleVote(1)}>
         <img
           src={voteChange > 0 ? upvoteFull : upvoteEmpty}
-          style={style.upvote}
+          style={styles.upvote}
           alt="up vote"
         />
       </button>
-      <button style={style.downvote} onClick={handleVote(-1)}>
+      <p style={styles.voteText}>{votes + voteChange}</p>
+      <button style={styles.downvote} onClick={handleVote(-1)}>
         <img
           src={voteChange < 0 ? downvoteFull : downvoteEmpty}
-          style={style.downvote}
+          style={styles.downvote}
           alt="down vote"
         />
       </button>
-      <p>{votes + voteChange}</p>
-    </>
+    </div>
   );
 }
