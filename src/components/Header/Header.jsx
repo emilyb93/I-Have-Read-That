@@ -25,21 +25,18 @@ const styles = {
     borderBottom: "1px solid grey",
   },
   desktopSluggedIcon: {
-    // border: "1px solid black",
     height: "4rem",
     width: "12rem",
     objectFit: "cover",
     gridArea: "1/1/2/2",
   },
   mobileSluggedIcon: {
-    // border: "1px solid black",
     height: "4rem",
     width: "4rem",
     objectFit: "fit",
     gridArea: "1/1/2/2",
   },
   username: {
-    // border: "1px solid black",
     marginLeft: "10px",
     marginRight: "5px",
     borderRadius: "5px",

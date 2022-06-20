@@ -9,19 +9,12 @@ const styles = {
   upvote: {
     height: "1.5rem",
     width: "1.5rem",
-    // backgroundColor: "Transparent",
-    // border: "none",
-
-    // alignSelf: "center",
     margin: "auto",
   },
 
   downvote: {
     height: "1.5rem",
     width: "1.5rem",
-    // backgroundColor: "Transparent",
-    // border: "none",
-    // alignSelf: "center",
     margin: "auto",
   },
   upvoteButton: {

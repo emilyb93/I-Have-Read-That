@@ -32,7 +32,6 @@ const styles = {
     position: "relative",
   },
   menuOption: {
-    // borderTop: "1px solid grey",
     borderBottom: "1px solid grey",
     textDecoration: "none",
     display: "grid",
