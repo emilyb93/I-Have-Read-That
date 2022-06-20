@@ -50,36 +50,48 @@ const styles = {
 
     // width: "100%",
     maxHeight: "80vw",
-    border: "1px solid black",
+    borderLeft: "1px solid grey",
     // borderLeft: "1px solid grey",
     paddingLeft: "5px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-around",
+    // display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "flex-start",
+
+    display: "grid",
+    gridTemplateRows: "1fr 1fr",
     marginRight: "30px",
+    gridArea: "1/2/2/3",
   },
   infoSection: {
-    height: "50%",
-    border: "1px solid red",
+    borderBottom: "1px solid grey",
+    height: "100%",
+    width: "100%",
+    justifyItems: "center",
+    alignItems: "center",
+    marginTop: "25%",
 
-    paddingTop: "50%",
-    paddingBottom: "50%",
-    gridArea: "info",
+    // paddingTop: "50%",
+    // paddingBottom: "50%",
+    gridArea: "1/1/2/1",
   },
   fakeAd: {
-    height: "50%",
-    paddingTop: "50%",
-    paddingBottom: "50%",
-    gridArea: "ad",
+    // paddingTop: "50%",
+    // paddingBottom: "50%",
 
-    border: "1px solid blue",
+    gridArea: "2/1/3/1",
+
+    marginTop: "-40%",
+    paddingTop: "5px",
+    borderTop: "1px solid grey",
+    // border: "1px solid blue",
   },
   fakeAdImage: {
-    height: "100%",
-
+    height: "auto",
     width: "100%",
   },
-  content: { borderTop: "1px solid grey" },
+  content: {
+    borderTop: "1px solid grey",
+  },
 };
 
 function App() {
