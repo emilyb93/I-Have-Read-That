@@ -47,7 +47,6 @@ const styles = {
   body: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     gridArea: "2 / 2 / 3 /2",
     alignItems: "start",
     textAlign: "left",
