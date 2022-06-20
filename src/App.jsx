@@ -23,40 +23,34 @@ const styles = {
     gridColumnGap: "0px",
     gridRowGap: "0px",
     maxWidth: "100vw",
+    minHeight: "100vh",
+    paddingRight: "5px",
   },
   mobileView: {
     gridArea: "2/1/3/4",
     maxWidth: "100vw",
-    // width: "100%",
     backgroundColor: "#F2F2F1",
     margin: "-5px",
   },
   desktopView: {
     gridArea: "2/1/3/4",
     maxWidth: "100vw",
-    // width: "100%",
     backgroundColor: "#F2F2F1",
     margin: "-5px",
     display: "grid",
-
     gridTemplateColumns: "70% 30%",
   },
   header: {
     gridArea: "1/1/2/4",
+    marginBottom: "5px",
+    marginTop: "5px",
   },
   sideBar: {
     marginTop: "3rem",
     width: "100%",
-
-    // width: "100%",
     maxHeight: "80vw",
     borderLeft: "1px solid grey",
-    // borderLeft: "1px solid grey",
     paddingLeft: "5px",
-    // display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "flex-start",
-
     display: "grid",
     gridTemplateRows: "1fr 1fr",
     marginRight: "30px",
@@ -69,28 +63,18 @@ const styles = {
     justifyItems: "center",
     alignItems: "center",
     marginTop: "25%",
-
-    // paddingTop: "50%",
-    // paddingBottom: "50%",
     gridArea: "1/1/2/1",
   },
   fakeAd: {
-    // paddingTop: "50%",
-    // paddingBottom: "50%",
-
     gridArea: "2/1/3/1",
-
     marginTop: "-40%",
     paddingTop: "5px",
+    paddingRight: "10px",
     borderTop: "1px solid grey",
-    // border: "1px solid blue",
   },
   fakeAdImage: {
     height: "auto",
     width: "100%",
-  },
-  content: {
-    borderTop: "1px solid grey",
   },
 };
 

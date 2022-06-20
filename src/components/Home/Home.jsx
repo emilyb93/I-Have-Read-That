@@ -21,7 +21,7 @@ function Home() {
     setInfo({});
     fetchArticles(null, sort_by, order)
       .then((fetchedArticles) => {
-        setArticles(fetchedArticles);
+        setArticles(fetchedArticles.slice(0, 10));
         setIsLoading(false);
         setError(false);
       })

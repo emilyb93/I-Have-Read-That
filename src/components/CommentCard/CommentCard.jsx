@@ -12,6 +12,8 @@ const styles = {
     gridTemplateRows: "0.5fr 1fr 0.5fr",
     gridColumnGap: "0px",
     gridRowGap: "0px",
+    marginRight: "20px",
+    marginLeft: "10px",
   },
   userIcon: {
     gridArea: "1/1/2/1",

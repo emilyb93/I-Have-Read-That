@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import SluggedIcon from "../../assets/Slugged.png";
+import React from "react";
+import { Link } from "react-router-dom";
+import desktopSluggedIcon from "../../assets/Slugged.png";
+import mobileSluggedIcon from "../../assets/Slugged-icon-only.png";
 import { useContext } from "react";
 import InfoContext from "../../contexts/InfoContext";
 import TopicDropdown from "../TopicDropdown/TopicDropdown";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
+import useScreenSize from "../../hooks/useScreenSize";
 
 const styles = {
   headerContainer: {
@@ -16,12 +18,24 @@ const styles = {
     gridColumnGap: "0px",
     gridRowGap: "0px",
     marginBottom: "10px",
+    position: "fixed",
+    opacity: "100%",
+    backgroundColor: "#F2F2F1",
+    top: "0",
+    borderBottom: "1px solid grey",
   },
-  SluggedIcon: {
+  desktopSluggedIcon: {
     // border: "1px solid black",
     height: "4rem",
     width: "12rem",
     objectFit: "cover",
+    gridArea: "1/1/2/2",
+  },
+  mobileSluggedIcon: {
+    // border: "1px solid black",
+    height: "4rem",
+    width: "4rem",
+    objectFit: "fit",
     gridArea: "1/1/2/2",
   },
   username: {
@@ -35,11 +49,17 @@ const styles = {
 
 export default function Header({ topics }) {
   const { info } = useContext(InfoContext);
+  const { isMobile } = useScreenSize();
 
   return (
     <header style={styles.headerContainer}>
       <Link to="/">
-        <img style={styles.SluggedIcon} src={SluggedIcon}></img>
+        <img
+          style={
+            isMobile ? styles.mobileSluggedIcon : styles.desktopSluggedIcon
+          }
+          src={isMobile ? mobileSluggedIcon : desktopSluggedIcon}
+        ></img>
       </Link>
       <TopicDropdown topics={topics} info={info} />
 

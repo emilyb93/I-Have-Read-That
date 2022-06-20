@@ -5,14 +5,11 @@ const styles = {
   topicContainer: {
     borderLeft: "1px solid grey",
     borderRight: "1px solid grey",
-    borderRadius: "5px",
     width: "100%",
     height: "80%",
-    margin: "auto",
     textAlign: "left",
     fontSize: "1.3rem",
     maxWidth: "400px",
-    // marginRight: "10px",
     marginBottom: "5px",
     gridArea: "1/2/3/3",
     display: "flex",
@@ -27,22 +24,16 @@ const styles = {
     paddingRight: "10px",
   },
   openedMenu: {
-    // gridArea: "1/1/2/2",
-    // zIndex: "1",
     display: "grid",
-    // gridTemplateColumns: "85% 15%",
-    // gridTemplateRows: "repeat(3, 1fr)",
-    // marginTop: "4rem",
     width: "100%",
     backgroundColor: "#F2F2F1",
     border: "1px solid grey",
     opacity: "100%",
     position: "relative",
-    // width: "30%",
   },
   menuOption: {
-    borderTop: "1px solid pink",
-    borderBottom: "1px solid pink",
+    // borderTop: "1px solid grey",
+    borderBottom: "1px solid grey",
     textDecoration: "none",
     display: "grid",
     gridTemplateColumns: "90% 10%",
@@ -90,7 +81,7 @@ function TopicDropdown({ topics, info }) {
                   style={styles.menuOption}
                   onClick={toggleMenu}
                 >
-                  <p style={styles.menuText}>{topic.slug}</p>
+                  <p style={styles.menuText}>/{topic.slug}</p>
                   <p>{">"}</p>
                 </NavLink>
               );

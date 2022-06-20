@@ -19,7 +19,7 @@ const styles = {
     height: "100%",
     display: "grid",
     gridTemplateColumns: "0.5fr 6fr",
-    gridTemplateRows: "0.5fr 0.5fr 0.5fr",
+    gridTemplateRows: "0.5fr 0.5fr",
     gridColumnGap: "0px",
     gridRowGap: "0px",
   },
@@ -53,6 +53,7 @@ const styles = {
     textAlign: "left",
     marginLeft: "20px",
     height: "100%",
+    marginRight: "30px",
   },
   commentCount: {
     gridArea: "1/1/2/2",
@@ -60,9 +61,11 @@ const styles = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
     paddingLeft: "10px",
     color: "#605959",
     marginLeft: "15px",
+    borderRight: "1px solid grey",
   },
   commentText: {
     marginLeft: "10px",
@@ -80,8 +83,9 @@ const styles = {
   bottomBar: {
     gridArea: "3/2/4/4",
     display: "grid",
-    gridTemplateColumns: "1fr 1fr 2.5fr",
+    gridTemplateColumns: "1fr 1fr",
     gridTemplateRows: "1fr",
+    alignItems: "center",
   },
 };
 function SingleArticle() {
@@ -99,6 +103,7 @@ function SingleArticle() {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchArticleWithId(article_id)
       .then((fetchedArticle) => {
         setArticle(fetchedArticle);
@@ -140,7 +145,7 @@ function SingleArticle() {
           </section>
           <section style={styles.share} onClick={copyToClipboard}>
             <span className="material-symbols-outlined">share</span>{" "}
-            <strong style={styles.commentText}>
+            <strong style={styles.shareText}>
               {copied ? "Copied!" : "Share"}
             </strong>
           </section>
