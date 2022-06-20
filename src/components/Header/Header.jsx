@@ -4,6 +4,7 @@ import SluggedIcon from "../../assets/Slugged.png";
 import { useContext } from "react";
 import InfoContext from "../../contexts/InfoContext";
 import TopicDropdown from "../TopicDropdown/TopicDropdown";
+import ProfileHeader from "../ProfileHeader/ProfileHeader";
 
 const styles = {
   headerContainer: {
@@ -41,9 +42,8 @@ export default function Header({ topics }) {
         <img style={styles.SluggedIcon} src={SluggedIcon}></img>
       </Link>
       <TopicDropdown topics={topics} info={info} />
-      <section style={styles.username}>
-        <p>Username Placeholder</p>
-      </section>
+
+      <ProfileHeader />
     </header>
   );
 }
