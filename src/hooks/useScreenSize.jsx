@@ -11,9 +11,13 @@ function useScreenSize() {
     setIsMobile(window.innerWidth < 768);
   };
 
+  const removeListener = () => {
+    window.removeEventListener("resize", getSize);
+  };
+
   useEffect(() => {
     window.addEventListener("resize", getSize);
-    return window.removeEventListener("resize", getSize);
+    return removeListener;
   }, []);
 
   return { windowWidth, windowHeight, isMobile };
