@@ -12,10 +12,11 @@ const styles = {
   articlePage: {
     display: "flex",
     flexDirection: "column",
+    width: "100%",
   },
   articleSection: {
+    width: "100%",
     height: "100%",
-    width: "25rem",
     display: "grid",
     gridTemplateColumns: "0.5fr 6fr",
     gridTemplateRows: "1fr 1fr 0.5fr",
@@ -23,6 +24,7 @@ const styles = {
     gridRowGap: "0px",
   },
   topSection: {
+    maxHeight: "8rem",
     gridArea: "1 / 2 / 2 / 4",
     display: "grid",
     gridTemplateColumns: "1fr",
@@ -39,9 +41,17 @@ const styles = {
   posterInfo: {
     textAlign: "left",
     marginLeft: "5px",
+    gridArea: "1/1/2/2",
   },
   title: { gridArea: "2/1/3/2", textAlign: "left", marginLeft: "5px" },
-  body: { gridArea: "2 / 3 / 4 / 4", textAlign: "left", marginLeft: "5px" },
+  body: {
+    display: "flex",
+    flexDirection: "column",
+    gridArea: "2 / 2 / 4 /2",
+    textAlign: "left",
+    marginLeft: "5px",
+    height: "100%",
+  },
   commentCount: {
     gridArea: "3/2/5/4",
     textAlign: "left",
