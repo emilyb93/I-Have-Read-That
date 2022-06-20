@@ -22,12 +22,19 @@ const styles = {
     gridTemplateRows: "10vh 1fr",
     gridColumnGap: "0px",
     gridRowGap: "0px",
+    maxWidth: "100vw",
   },
   mobileView: {
+    gridArea: "2/1/3/4",
+    maxWidth: "100vw",
+    // width: "100%",
     backgroundColor: "#F2F2F1",
     margin: "-5px",
   },
   desktopView: {
+    gridArea: "2/1/3/4",
+    maxWidth: "100vw",
+    // width: "100%",
     backgroundColor: "#F2F2F1",
     margin: "-5px",
     display: "grid",
@@ -39,11 +46,12 @@ const styles = {
   },
   sideBar: {
     marginTop: "3rem",
+    width: "100%",
 
     // width: "100%",
     maxHeight: "80vw",
-    // border: "1px solid black",
-    borderLeft: "1px solid grey",
+    border: "1px solid black",
+    // borderLeft: "1px solid grey",
     paddingLeft: "5px",
     display: "flex",
     flexDirection: "column",
@@ -52,7 +60,7 @@ const styles = {
   },
   infoSection: {
     height: "50%",
-    // border: "1px solid red",
+    border: "1px solid red",
 
     paddingTop: "50%",
     paddingBottom: "50%",
@@ -64,12 +72,11 @@ const styles = {
     paddingBottom: "50%",
     gridArea: "ad",
 
-    // border: "1px solid blue",
-    // gridArea: "fakeAd",
+    border: "1px solid blue",
   },
   fakeAdImage: {
     height: "100%",
-    // maxHeight: "",
+
     width: "100%",
   },
   content: { borderTop: "1px solid grey" },
@@ -112,7 +119,6 @@ function App() {
           <Header topics={topics} />
         </header>
 
-        <hr style={{ borderTop: "1px solid grey" }}></hr>
         <main style={isMobile ? styles.mobileView : styles.desktopView}>
           <section style={styles.content}>
             <Routes>

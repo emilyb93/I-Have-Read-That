@@ -41,7 +41,12 @@ function ArticleList({ articles, setSelectedSort }) {
 
       <ul style={style.articleList}>
         {articles.map((article) => {
-          return <ArticleCard article={article} />;
+          return (
+            <ArticleCard
+              article={article}
+              key={`article${article.article_id}`}
+            />
+          );
         })}
       </ul>
     </section>

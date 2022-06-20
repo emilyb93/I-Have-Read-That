@@ -21,12 +21,14 @@ const styles = {
     height: "4rem",
     width: "12rem",
     objectFit: "cover",
+    gridArea: "1/1/2/2",
   },
   username: {
     // border: "1px solid black",
     marginLeft: "10px",
     marginRight: "5px",
     borderRadius: "5px",
+    gridArea: "1/3/3/4",
   },
 };
 
