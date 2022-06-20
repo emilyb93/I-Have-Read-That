@@ -19,7 +19,7 @@ const styles = {
     height: "100%",
     display: "grid",
     gridTemplateColumns: "0.5fr 6fr",
-    gridTemplateRows: "1fr 1fr 0.5fr",
+    gridTemplateRows: "0.5fr 0.5fr 0.5fr",
     gridColumnGap: "0px",
     gridRowGap: "0px",
   },
@@ -46,19 +46,42 @@ const styles = {
   title: { gridArea: "2/1/3/2", textAlign: "left", marginLeft: "5px" },
   body: {
     display: "flex",
-    flexDirection: "column",
-    gridArea: "2 / 2 / 4 /2",
+    flexDirection: "row",
+    alignItems: "center",
+    gridArea: "2 / 2 / 3 /2",
+    alignItems: "start",
     textAlign: "left",
-    marginLeft: "5px",
+    marginLeft: "20px",
     height: "100%",
   },
   commentCount: {
-    gridArea: "3/2/5/4",
+    gridArea: "1/1/2/2",
     textAlign: "left",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     paddingLeft: "10px",
+    color: "#605959",
+    marginLeft: "15px",
+  },
+  commentText: {
+    marginLeft: "10px",
+  },
+  share: {
+    gridArea: "1/2/2/2",
+    margin: "auto",
+    height: "100%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    color: "#605959",
+  },
+  bottomBar: {
+    gridArea: "3/2/4/4",
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr 2.5fr",
+    gridTemplateRows: "1fr",
   },
 };
 function SingleArticle() {
@@ -67,7 +90,13 @@ function SingleArticle() {
   const [error, setError] = useState(false);
   const { article_id } = useParams();
 
+  const [copied, setCopied] = useState(false);
   const { setInfo } = useContext(InfoContext);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+  };
 
   useEffect(() => {
     fetchArticleWithId(article_id)
@@ -102,9 +131,19 @@ function SingleArticle() {
           <h2 style={styles.title}>{article.title}</h2>
         </section>
         <p style={styles.body}>{article.body}</p>
-        <section style={styles.commentCount}>
-          <span className="material-symbols-outlined">chat_bubble</span>
-          <p>{article.comment_count} comments</p>
+        <section style={styles.bottomBar}>
+          <section style={styles.commentCount}>
+            <span className="material-symbols-outlined">chat_bubble</span>
+            <strong style={styles.commentText}>
+              {article.comment_count} Comments
+            </strong>
+          </section>
+          <section style={styles.share} onClick={copyToClipboard}>
+            <span className="material-symbols-outlined">share</span>{" "}
+            <strong style={styles.commentText}>
+              {copied ? "Copied!" : "Share"}
+            </strong>
+          </section>
         </section>
       </section>
       <CommentsList article_id={article.article_id} />
