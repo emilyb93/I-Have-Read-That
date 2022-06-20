@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import upvoteEmpty from "../../assets/upvote-empty.png";
 import upvoteFull from "../../assets/upvote-full.png";
 import downvoteEmpty from "../../assets/downvote-empty.png";
@@ -8,12 +8,19 @@ import { patchArticleVotes } from "../../api";
 
 const styles = {
   voteBar: {
-    height: "2rem",
-    width: "30%",
-    display: "flex",
-    flexDirection: "row",
+    height: "100%",
+    width: "100%",
     fontSize: "1.2rem",
-    justifyContent: "space-around",
+
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignContent: "center",
+
+    paddingTop: "15px",
+    // backgroundColor: "#C4D9DE",
+
+    // border: "1px solid grey",
   },
   upvote: {
     height: "1.3rem",
@@ -39,7 +46,7 @@ const styles = {
     // width: "2rem",
     justifyContent: "center",
     alignContent: "center",
-    marginTop: "5px",
+    marginTop: "25%",
     // marginBlockStart: "0px",
     marginBlockEnd: "0px",
     textAlign: "center",
@@ -48,7 +55,7 @@ const styles = {
   },
 };
 
-export default function ArticleVote({ article_id, articleVotes }) {
+export default function ArticleVoteVert({ article_id, articleVotes }) {
   const [votes] = useState(articleVotes);
   const [voteChange, setVoteChange] = useState(0);
 

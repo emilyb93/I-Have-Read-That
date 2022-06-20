@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ArticleCard from "../ArticleCard/ArticleCard";
 import SortBar from "../SortBar/SortBar";
 
 const style = {
@@ -18,7 +19,7 @@ const style = {
     flexDirection: "column",
     height: "4rem",
     width: "90vw",
-    border: "1px solid black",
+    borderBottom: "1px solid grey",
     textAlign: "left",
     marginLeft: "1rem",
     marginRight: "1rem",
@@ -27,29 +28,28 @@ const style = {
   articleTitle: {
     marginBottom: "0px",
   },
+  articleSection: {
+    display: "flex",
+    flexDirection: "column",
+  },
 };
 
 function ArticleList({ articles, setSelectedSort }) {
   return (
-    <>
+    <section style={style.articleSection}>
       <SortBar setSelectedSort={setSelectedSort} />
 
       <ul style={style.articleList}>
         {articles.map((article) => {
           return (
-            <li style={style.articleCard} key={"article" + article.article_id}>
-              <Link to={`/article/${article.article_id}`}>
-                <p style={style.articleTitle}> {article.title}</p>
-              </Link>
-
-              <Link to={`/slug/${article.topic}`}>
-                <p>{"/" + article.topic}</p>
-              </Link>
-            </li>
+            <ArticleCard
+              article={article}
+              key={`article${article.article_id}`}
+            />
           );
         })}
       </ul>
-    </>
+    </section>
   );
 }
 
