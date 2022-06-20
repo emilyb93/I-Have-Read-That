@@ -4,8 +4,65 @@ import upvoteEmpty from "../../assets/upvote-empty.png";
 import upvoteFull from "../../assets/upvote-full.png";
 import downvoteEmpty from "../../assets/downvote-empty.png";
 import downvoteFull from "../../assets/downvote-full.png";
-import { style } from "./CommentVote.style";
 
+const styles = {
+  upvote: {
+    height: "1.5rem",
+    width: "1.5rem",
+    // backgroundColor: "Transparent",
+    // border: "none",
+
+    // alignSelf: "center",
+    margin: "auto",
+  },
+
+  downvote: {
+    height: "1.5rem",
+    width: "1.5rem",
+    // backgroundColor: "Transparent",
+    // border: "none",
+    // alignSelf: "center",
+    margin: "auto",
+  },
+  upvoteButton: {
+    height: "2.2rem",
+    width: "2.2rem",
+    backgroundColor: "Transparent",
+    border: "none",
+
+    alignSelf: "center",
+    margin: "auto",
+  },
+
+  downvoteButton: {
+    height: "2.2rem",
+    width: "2.2rem",
+    backgroundColor: "Transparent",
+    border: "none",
+    alignSelf: "center",
+    margin: "auto",
+  },
+
+  voteCount: {
+    fontSize: "1.2rem",
+    height: "2rem",
+    width: "2rem",
+    backgroundColor: "Transparent",
+    border: "none",
+    textAlign: "center",
+    margin: "auto",
+    marginTop: "25%",
+    alignSelf: "center",
+  },
+  votingSection: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridTemplateRows: "1fr",
+    gridColumnGap: "0px",
+    gridRowGap: "0px",
+    justifyItems: "center",
+  },
+};
 function CommentVote({ comment_id, comment_votes }) {
   const [votes] = useState(comment_votes);
   const [voteChange, setVoteChange] = useState(0);
@@ -31,23 +88,23 @@ function CommentVote({ comment_id, comment_votes }) {
   }
 
   return (
-    <>
-      <button style={style.upvote} onClick={handleVote(1)}>
+    <section style={styles.votingSection}>
+      <button style={styles.upvoteButton} onClick={handleVote(1)}>
         <img
           src={voteChange > 0 ? upvoteFull : upvoteEmpty}
-          style={style.upvote}
+          style={styles.upvote}
           alt="up vote"
         />
       </button>
-      <button style={style.downvote} onClick={handleVote(-1)}>
+      <strong style={styles.voteCount}>{votes + voteChange}</strong>
+      <button style={styles.downvoteButton} onClick={handleVote(-1)}>
         <img
           src={voteChange < 0 ? downvoteFull : downvoteEmpty}
-          style={style.downvote}
+          style={styles.downvote}
           alt="down vote"
         />
       </button>
-      <p>{votes + voteChange}</p>
-    </>
+    </section>
   );
 }
 
