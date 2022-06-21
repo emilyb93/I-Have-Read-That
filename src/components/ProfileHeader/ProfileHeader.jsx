@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import useScreenSize from "../../hooks/useScreenSize";
-
+import { Link } from "react-router-dom";
+import InfoContext from "../../contexts/InfoContext";
 const styles = {
   username: {
     marginLeft: "10px",
@@ -41,16 +42,23 @@ const styles = {
 };
 
 function ProfileHeader() {
+  const { setInfo } = useContext(InfoContext);
   const username = "jessjelly";
   const imgURL =
     "https://vignette.wikia.nocookie.net/mrmen/images/4/4f/MR_JELLY_4A.jpg/revision/latest?cb=20180104121141";
 
   const { isMobile } = useScreenSize();
+
+  useEffect(() => {
+    setInfo({});
+  }, []);
   return (
-    <section style={isMobile ? styles.centeredUsername : styles.username}>
-      {!isMobile && <p style={styles.name}>{username}</p>}
-      <img src={imgURL} style={styles.avatar}></img>
-    </section>
+    <Link to={`/u/${username}`}>
+      <section style={isMobile ? styles.centeredUsername : styles.username}>
+        {!isMobile && <p style={styles.name}>{username}</p>}
+        <img src={imgURL} style={styles.avatar}></img>
+      </section>
+    </Link>
   );
 }
 
