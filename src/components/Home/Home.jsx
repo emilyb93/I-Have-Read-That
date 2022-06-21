@@ -17,6 +17,8 @@ function Home() {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const { sort_by, order } = selectedSort;
     setInfo({});
     fetchArticles(null, sort_by, order)

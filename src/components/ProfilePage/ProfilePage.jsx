@@ -19,6 +19,7 @@ export default function ProfilePage() {
     order: "desc",
   });
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchUserPosts("jessjelly", selectedSort).then((posts) => {
       setUserPosts(posts);
     });
