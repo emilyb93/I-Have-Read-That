@@ -89,7 +89,7 @@ function App() {
           <section style={styles.content}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/slug/:slug" element={<Slugged topics={topics} />} />
+              <Route path="/s/:slug" element={<Slugged topics={topics} />} />
               <Route path="/article/:article_id" element={<SingleArticle />} />
               <Route path="/u/:username" element={<ProfilePage />} />
               <Route path="/*" element={<ShowError />} />

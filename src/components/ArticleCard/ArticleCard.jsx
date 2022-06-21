@@ -91,7 +91,7 @@ function ArticleCard({ article }) {
       </section>
       <section style={styles.topBar}>
         <Link
-          to={`/slug/${article.topic}`}
+          to={`/s/${article.topic}`}
           style={{ linkDecoration: "none", color: "black" }}
         >
           <p style={styles.slugText}>{"/" + article.topic}</p>
