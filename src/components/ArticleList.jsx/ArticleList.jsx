@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import ArticleCard from "../ArticleCard/ArticleCard";
 import SortBar from "../SortBar/SortBar";
 
@@ -13,6 +13,7 @@ const style = {
     justifyContent: "left",
     marginBlockStart: "0px",
     padding: "0px",
+    width: "100%",
   },
   articleCard: {
     display: "flex",
@@ -37,9 +38,8 @@ const style = {
 function ArticleList({ articles, setSelectedSort }) {
   return (
     <section style={style.articleSection}>
-      <SortBar setSelectedSort={setSelectedSort} />
-
       <ul style={style.articleList}>
+        <SortBar setSelectedSort={setSelectedSort} style={{ width: "100%" }} />
         {articles.map((article) => {
           return (
             <ArticleCard

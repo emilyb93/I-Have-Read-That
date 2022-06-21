@@ -21,6 +21,8 @@ function Slugged({ topics }) {
   const { setInfo } = useContext(infoContext);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const { sort_by, order } = selectedSort;
 
     const validTopics = topics.map((x) => x.slug);

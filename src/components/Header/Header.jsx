@@ -23,6 +23,7 @@ const styles = {
     backgroundColor: "#F2F2F1",
     top: "0",
     borderBottom: "1px solid grey",
+    paddingTop: "5px",
   },
   desktopSluggedIcon: {
     height: "4rem",

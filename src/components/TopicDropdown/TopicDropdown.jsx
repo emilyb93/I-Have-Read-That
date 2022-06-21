@@ -75,7 +75,7 @@ function TopicDropdown({ topics, info }) {
             .map((topic) => {
               return (
                 <NavLink
-                  to={`/slug/${topic.slug}`}
+                  to={`/s/${topic.slug}`}
                   key={`topic-${topic.slug}`}
                   style={styles.menuOption}
                   onClick={toggleMenu}

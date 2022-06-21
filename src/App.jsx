@@ -12,6 +12,7 @@ import Loading from "./components/Loading/Loading";
 import useScreenSize from "./hooks/useScreenSize";
 
 import Sidebar from "./components/Sidebar/Sidebar";
+import ProfilePage from "./components/ProfilePage/ProfilePage";
 
 const styles = {
   app: {
@@ -88,8 +89,9 @@ function App() {
           <section style={styles.content}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/slug/:slug" element={<Slugged topics={topics} />} />
+              <Route path="/s/:slug" element={<Slugged topics={topics} />} />
               <Route path="/article/:article_id" element={<SingleArticle />} />
+              <Route path="/u/:username" element={<ProfilePage />} />
               <Route path="/*" element={<ShowError />} />
             </Routes>
           </section>

@@ -55,3 +55,11 @@ export const deleteComment = async (comment_id) => {
 
   return res;
 };
+
+export const fetchUserPosts = async (author, sorts) => {
+  const res = await newsApi.get("/articles", {
+    params: { author, ...sorts },
+  });
+
+  return res.data.articles;
+};
