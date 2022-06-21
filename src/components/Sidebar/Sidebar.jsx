@@ -39,7 +39,7 @@ function Sidebar({ info, topics, setInfo }) {
   useEffect(() => {
     if (info.slug) {
       setInfo((currentInfo) => {
-        const info = topics.find((x) => (x.slug = currentInfo.slug));
+        const info = topics.find((x) => x.slug === currentInfo.slug);
         return info;
       });
     }
