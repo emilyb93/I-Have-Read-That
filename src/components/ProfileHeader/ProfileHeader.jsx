@@ -39,6 +39,10 @@ const styles = {
     marginTop: "auto",
     marginBottom: "auto",
   },
+  link: {
+    textDecoration: "none",
+    color: "black",
+  },
 };
 
 function ProfileHeader() {
@@ -53,9 +57,9 @@ function ProfileHeader() {
     setInfo({});
   }, []);
   return (
-    <Link to={`/u/${username}`}>
+    <Link to={`/u/${username}`} style={styles.link}>
       <section style={isMobile ? styles.centeredUsername : styles.username}>
-        {!isMobile && <p style={styles.name}>{username}</p>}
+        {!isMobile && <p style={styles.name}>u/{username}</p>}
         <img src={imgURL} style={styles.avatar}></img>
       </section>
     </Link>
