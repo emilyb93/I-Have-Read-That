@@ -25,7 +25,7 @@ export default function ProfilePage() {
   }, [selectedSort]);
   return (
     <section>
-      <h2 style={styles.title}>{username}'s Posts</h2>
+      <h2 style={styles.title}>u/{username}'s Posts</h2>
       <ArticleList articles={userPosts} setSelectedSort={setSelectedSort} />
     </section>
   );
