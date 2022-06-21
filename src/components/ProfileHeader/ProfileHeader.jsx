@@ -13,8 +13,12 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "2fr 1fr",
     gridTemplateRows: "1fr",
+    textDecoration: "none",
+    color: "black",
   },
   centeredUsername: {
+    textDecoration: "none",
+    color: "black",
     marginTop: "7px",
     marginLeft: "auto",
     marginRight: "auto",
@@ -57,11 +61,12 @@ function ProfileHeader() {
     setInfo({});
   }, []);
   return (
-    <Link to={`/u/${username}`} style={styles.link}>
-      <section style={isMobile ? styles.centeredUsername : styles.username}>
-        {!isMobile && <p style={styles.name}>u/{username}</p>}
-        <img src={imgURL} style={styles.avatar}></img>
-      </section>
+    <Link
+      to={`/u/${username}`}
+      style={isMobile ? styles.centeredUsername : styles.username}
+    >
+      {!isMobile && <p style={styles.name}>u/{username}</p>}
+      <img src={imgURL} style={styles.avatar}></img>
     </Link>
   );
 }
