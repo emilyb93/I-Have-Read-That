@@ -3,19 +3,30 @@ import React, { useEffect, useState } from "react";
 import { fetchUserPosts } from "../../api";
 import ArticleList from "../ArticleList.jsx/ArticleList";
 
+const styles = {
+  title: {
+    textAlign: "left",
+    marginLeft: "20px",
+  },
+};
+
 export default function ProfilePage() {
   const username = "jessjelly";
   const [userPosts, setUserPosts] = useState([]);
 
+  const [selectedSort, setSelectedSort] = useState({
+    sort_by: "date",
+    order: "desc",
+  });
   useEffect(() => {
-    fetchUserPosts("jessjelly").then((posts) => {
+    fetchUserPosts("jessjelly", selectedSort).then((posts) => {
       setUserPosts(posts);
     });
-  }, []);
+  }, [selectedSort]);
   return (
     <section>
-      <h2>{username}'s Posts</h2>
-      <ArticleList articles={userPosts} />
+      <h2 style={styles.title}>{username}'s Posts</h2>
+      <ArticleList articles={userPosts} setSelectedSort={setSelectedSort} />
     </section>
   );
 }
